@@ -3,113 +3,228 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Магистратура ТГО тесті</title>
+
   <style>
     :root {
-      --bg: #f7f3ff;
+      --bg: #f6f1ff;
       --card: #ffffff;
-      --main: #6d28d9;
-      --main2: #8b5cf6;
+      --main: #7c3aed;
+      --main-dark: #5b21b6;
+      --accent: #f59e0b;
       --soft: #ede9fe;
+      --soft2: #fff7ed;
       --text: #1f2937;
       --muted: #6b7280;
+      --border: #e5e7eb;
       --ok: #16a34a;
       --bad: #dc2626;
-      --border: #e5e7eb;
+      --shadow: 0 14px 35px rgba(31, 41, 55, 0.10);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #f7f3ff, #fff7ed);
+      background:
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(245, 158, 11, 0.18), transparent 30%),
+        linear-gradient(135deg, #faf5ff, #fff7ed);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     header {
-      background: linear-gradient(135deg, #6d28d9, #9333ea);
-      color: white;
-      padding: 34px 18px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #6d28d9, #9333ea, #f59e0b);
+      color: #fff;
+      padding: 44px 18px 38px;
       text-align: center;
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-      box-shadow: 0 10px 25px rgba(109, 40, 217, 0.25);
+      border-bottom-left-radius: 34px;
+      border-bottom-right-radius: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+      top: -90px;
+      left: -70px;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      right: -60px;
+      bottom: -80px;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     header h1 {
       margin: 0;
-      font-size: 30px;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
       letter-spacing: 0.3px;
     }
 
     header p {
-      margin: 10px auto 0;
+      margin: 12px auto 0;
       max-width: 720px;
-      font-size: 16px;
-      opacity: 0.95;
+      font-size: 17px;
+      opacity: 0.96;
+    }
+
+    .top-badges {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 14px;
+      backdrop-filter: blur(6px);
     }
 
     .container {
-      width: min(1100px, 94%);
-      margin: 26px auto;
+      width: min(1120px, 94%);
+      margin: 28px auto;
     }
 
     .notice {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+      border-left: 7px solid var(--main);
+      padding: 18px 20px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-card {
       background: #fff;
       border: 1px solid var(--border);
-      border-left: 6px solid var(--main);
-      padding: 18px;
-      border-radius: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      border-radius: 22px;
+      padding: 16px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(31, 41, 55, 0.07);
+    }
+
+    .nav-card a {
+      text-decoration: none;
+      color: var(--main-dark);
+      background: var(--soft);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .nav-card a:hover {
+      background: var(--main);
+      color: #fff;
+      transform: translateY(-1px);
     }
 
     .section-title {
       margin: 34px 0 16px;
-      padding: 18px 20px;
-      background: var(--soft);
+      padding: 20px 22px;
+      background: linear-gradient(135deg, #ede9fe, #fff7ed);
       color: #4c1d95;
-      border-radius: 18px;
-      font-size: 22px;
-      font-weight: 800;
+      border-radius: 22px;
+      font-size: 23px;
+      font-weight: 900;
+      border: 1px solid rgba(124,58,237,0.16);
+      box-shadow: 0 10px 24px rgba(31,41,55,0.06);
     }
 
     .question {
-      background: var(--card);
+      background: rgba(255,255,255,0.94);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 20px;
+      border-radius: 24px;
+      padding: 21px;
       margin-bottom: 18px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      box-shadow: 0 12px 28px rgba(31, 41, 55, 0.08);
     }
 
     .q-head {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: flex-start;
       margin-bottom: 12px;
     }
 
     .q-num {
-      min-width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--main);
+      min-width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #7c3aed, #9333ea);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(124,58,237,0.25);
     }
 
     .q-text {
       font-size: 17px;
-      font-weight: 700;
-      padding-top: 4px;
+      font-weight: 750;
+      padding-top: 3px;
+    }
+
+    .passage {
+      background: linear-gradient(135deg, #ffffff, #faf5ff);
+      border: 1px solid #ddd6fe;
+      border-left: 7px solid var(--accent);
+      border-radius: 22px;
+      padding: 18px 20px;
+      margin: 24px 0 18px;
+      box-shadow: 0 10px 24px rgba(31, 41, 55, 0.06);
+    }
+
+    .passage-title {
+      font-weight: 900;
+      color: #92400e;
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .passage p {
+      margin: 0;
+      text-align: justify;
     }
 
     .q-image {
@@ -117,64 +232,85 @@
       max-width: 520px;
       width: 100%;
       margin: 14px auto;
-      border-radius: 14px;
+      border-radius: 18px;
       border: 1px solid var(--border);
       background: #fff;
+      box-shadow: 0 10px 24px rgba(31, 41, 55, 0.08);
+    }
+
+    .q-images {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    .q-images .q-image {
+      width: 235px;
+      max-width: 100%;
+      margin: 0;
     }
 
     .options {
-      margin-top: 12px;
+      margin-top: 13px;
       display: grid;
       gap: 10px;
     }
 
     label.option {
       display: block;
-      padding: 12px 14px;
+      padding: 13px 15px;
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 16px;
       background: #fafafa;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.18s;
+      font-size: 16px;
     }
 
     label.option:hover {
       background: #f3e8ff;
-      border-color: var(--main2);
+      border-color: #a78bfa;
+      transform: translateY(-1px);
     }
 
     input[type="radio"] {
-      margin-right: 8px;
+      margin-right: 9px;
+      transform: scale(1.08);
     }
 
     .check-area {
       text-align: center;
-      margin: 34px 0;
+      margin: 36px 0;
     }
 
     button {
       border: none;
-      background: linear-gradient(135deg, #6d28d9, #9333ea);
+      background: linear-gradient(135deg, #7c3aed, #9333ea, #f59e0b);
       color: white;
-      padding: 15px 28px;
+      padding: 16px 30px;
       border-radius: 999px;
       font-size: 18px;
-      font-weight: 800;
+      font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(109, 40, 217, 0.25);
+      box-shadow: 0 12px 28px rgba(124,58,237,0.28);
+      transition: 0.2s;
     }
 
     button:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(124,58,237,0.34);
     }
 
     #result {
       display: none;
-      background: white;
-      border-radius: 24px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 26px;
       padding: 24px;
       margin: 30px 0;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow);
       border: 1px solid var(--border);
     }
 
@@ -186,69 +322,97 @@
     }
 
     .score-card {
-      background: #f5f3ff;
-      border-radius: 18px;
+      background: linear-gradient(135deg, #f5f3ff, #fff7ed);
+      border-radius: 20px;
       padding: 18px;
       text-align: center;
       border: 1px solid #ddd6fe;
     }
 
+    .score-card span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
     .score-card strong {
       display: block;
-      font-size: 28px;
-      color: var(--main);
+      font-size: 30px;
+      color: var(--main-dark);
       margin-top: 6px;
     }
 
     .explanation {
       background: #fafafa;
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 16px;
       margin: 12px 0;
     }
 
     .right {
       color: var(--ok);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .wrong {
       color: var(--bad);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .formula {
       background: #f8fafc;
-      border-left: 5px solid var(--main2);
-      padding: 10px 14px;
-      border-radius: 10px;
+      border-left: 5px solid var(--main);
+      padding: 11px 14px;
+      border-radius: 12px;
       margin-top: 8px;
-      font-family: "Courier New", monospace;
       white-space: pre-wrap;
     }
 
+    .overline {
+      text-decoration: overline;
+      text-decoration-thickness: 1.5px;
+      font-weight: 700;
+    }
+
     footer {
-      margin-top: 40px;
-      background: #1f2937;
+      margin-top: 44px;
+      background: linear-gradient(135deg, #1f2937, #111827);
       color: white;
       text-align: center;
-      padding: 24px 16px;
-      border-top-left-radius: 28px;
-      border-top-right-radius: 28px;
+      padding: 26px 16px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
     }
 
     footer p {
       margin: 5px 0;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 24px;
+    @media (max-width: 640px) {
+      header {
+        padding: 34px 14px 30px;
+      }
+
+      .question {
+        padding: 17px;
+      }
+
+      .q-head {
+        gap: 10px;
+      }
+
+      .q-num {
+        min-width: 38px;
+        height: 38px;
+        border-radius: 13px;
       }
 
       .q-text {
         font-size: 16px;
+      }
+
+      .q-images .q-image {
+        width: 100%;
       }
     }
   </style>
@@ -256,8 +420,16 @@
 
 <body>
   <header>
-    <h1>Магистратура ТГО тесті</h1>
-    <p>Аналитикалық ойлау және сыни ойлау бойынша дайындық тесті</p>
+    <div class="header-inner">
+      <h1>Магистратура ТГО тесті</h1>
+      <p>Аналитикалық ойлау және сыни ойлау бойынша дайындық тесті</p>
+
+      <div class="top-badges">
+        <span class="badge">30 сұрақ</span>
+        <span class="badge">2 бөлім</span>
+        <span class="badge">Нәтиже автоматты шығады</span>
+      </div>
+    </div>
   </header>
 
   <main class="container">
@@ -266,11 +438,17 @@
       Нәтижеде жалпы балл, әр блок бойынша балл және сұрақтардың түсіндірмесі шығады.
     </div>
 
+    <div class="nav-card">
+      <a href="#analytical-section">Аналитикалық ойлау</a>
+      <a href="#critical-section">Сыни ойлау</a>
+      <a href="#result">Нәтиже</a>
+    </div>
+
     <form id="quizForm">
-      <div class="section-title">I бөлім. Аналитикалық ойлау</div>
+      <div class="section-title" id="analytical-section">I бөлім. Аналитикалық ойлау</div>
       <div id="analytical"></div>
 
-      <div class="section-title">II бөлім. Сыни ойлау</div>
+      <div class="section-title" id="critical-section">II бөлім. Сыни ойлау</div>
       <div id="critical"></div>
 
       <div class="check-area">
@@ -288,6 +466,50 @@
   </footer>
 
   <script>
+    const passages = {
+      p19_21: `
+        Халқымыздың байырғы бейнелеу шығармашылығының жетекші түрі – дәстүрлі қолөнер.
+        Қазақстан мәдениетінде маңызды орын алады. Қазақтың халықтық қолөнері бағыттары мен формасының алуан түрлілігімен,
+        көркемдік әдіс-тәсілдерінің байлығымен ерекшеленеді. Шеберлердің шығармашылық қызметінің ауқымы тұрмыс-тіршілігіне
+        қажетті заттар – киім-кешек тігу, үй ішінен әртүрлі бұйымдарын, киіз үй жиһаздарын, қару-жарақ жасаудан бастап
+        мола басына кесене, там тұрғызуға дейінгі түрлі кәсіпті қамтыды.
+      `,
+
+      p22_24: `
+        Адамзат дамуының алғашқы дәуірінде олардың негізгі қорегінің өсімдіктер болғаны мәлім.
+        Тағам үшін ішіп-жейтін өсімдік түрлерінің көбеюіне байланысты адамдар олардың әрқайсысының ерекше дәмі, иісі,
+        қасиеті барын да байқаған. Ертедегі мысырлықтар алоэ, қараған, анис, зімбір, лотос, көкнәр, жалбыз, тал,
+        аршаның шипалық қасиеттерін біліп, үй бөлмесінде, үй ауласында өсіре бастаған. Мұнан 4000 жыл бұрын үндістандықтар
+        760 дәрілік өсімдікті пайдалана отырып, гүл отырғызумен де әуестенген. Кейін өсімдіктердің далада, үй ауласында,
+        үй бөлмесінде өсетін түрлері пайда болып, олар сәндік қызмет атқарды. Адамдар үйінде, ауласында өсетін гүлдерді
+        бір-біріне сыйлап, оның жұпар иісінен, әсем түрінен ләззат алады.
+      `,
+
+      p25_27: `
+        Инклюзивті білім беру латын тілінің «енгіземін, қосамын» деген сөзінен алған.
+        Бұл терминнің мағынасы – мүмкіндігі шектеулі балаларды дені сау, дамуы қалыпты балалармен бірге оқытып,
+        тәрбиелеу дегенді білдіреді. Яғни, мектеп жасына дейінгі әртүрлі мүмкіндігі шектеулі балаларды дамытуды,
+        мектепке дейінгі білім алуға және дамытуға қол жеткізуді көздейтін кіріктірілген білім беру процесі.
+        Түзете инклюзивті білім беру кабинеті бір жастан алты жасқа дейінгі даму мүмкіндігі шектеулі балаларға
+        кешенді медициналық – педагогикалық және әлеуметтік – психологиялық көмек көрсетуге арналған арнайы білім беру
+        ұйымының бірі болып табылады.
+      `,
+
+      p28_30: `
+        Сұр шойын – Fe-C-Si қорытпаның жүйесі, құрамында марганец, фосфор және күкірт қосылыстары болады.
+        Сұр шойында көміртегі графит түрінде пластикалы пішіні болады.
+        Сұр шойын химиялық құрамы C-2,4-3,8%, Si-1-5%, P-0.2-0.4%, S-0.12%-ке дейін болады.
+        Сұр шойын металл негізінен және графит қосуынан тұрады.
+        Металл негізі бойынша шойындар сұр перлитті, сұр феррит-перлитті, сұр ферритті болып бөлінеді.
+        Механикалық қасиеттері металл матрица қасиетіне, формасына, графит өлшеміне байланысты.
+        МЕСТ 1412-85 бойынша сұр шойын әріппен «C» (сұр), «Ш» (шойын) және санмен маркаланады.
+        Бірінші топ саны орта маңызды беріктік шегі созылу кезіндегі көрсетіледі, екінші – орта маңызды беріктік шегі майысу кезінде.
+        Сұр шойындарды қасиеттері бойынша үшке бөлуге болады: ферритті және феррит-перлитті, перлитті.
+        Ақ шойын цементтердің арқасында қатты, морт сынғыш болып келеді, ол кесу арқылы нашар өңделеді.
+        Жоғары қаттылықтың арқасында ақ шойын жоғары төзімді болады.
+      `
+    };
+
     const questions = [
       {
         id: 1,
@@ -320,9 +542,9 @@
         block: "analytical",
         text: "Фигурадағы боялған клеткалар бөліктерінің қосындысы үшін дұрыс жауапты табыңыз.",
         image: "IMG_1076.jpeg",
-        options: ["2 1/4", "2 3/4", "3 1/4", "3 1/5", "2 1/5"],
+        options: ["2 ³/₆", "2 ⁴/₆", "3 ¹/₆", "3 ²/₆", "2 ⁵/₆"],
         answer: 0,
-        explanation: "Әр фигурадағы боялған бөліктерді бөлшек түрінде жазып, қосамыз. Қосындысы 2 1/4 болады."
+        explanation: "Боялған бөліктерді қосқанда нәтиже 2 ³/₆ болады. Бұл 2 ¹/₂-ге тең."
       },
       {
         id: 5,
@@ -337,7 +559,7 @@
         id: 6,
         block: "analytical",
         text: "Кестенің диаграммалық кескіні берілген. Құстарға сәйкес келетін бөліктің градустық өлшемі қандай?",
-        image: "IMG_1078.jpeg",
+        images: ["IMG_1078.jpeg", "IMG_1083.jpeg"],
         options: ["72°", "45°", "55°", "95°", "62°"],
         answer: 0,
         explanation: "Құстар саны — 8,4 млн, жалпы саны — 42 млн. Үлесі: 8,4 / 42 = 0,2. Градуспен: 0,2 × 360° = 72°."
@@ -345,10 +567,11 @@
       {
         id: 7,
         block: "analytical",
-        text: "3x + 2y = 1 және 14x + 9y = 5. A шамасы — x, B шамасы — y. Қайсысы дұрыс?",
+        text: "Суреттегі тапсырма бойынша дұрыс жауапты таңдаңыз.",
+        image: "IMG_1082.jpeg",
         options: ["A шамасы үлкен", "Екі шама тең", "B шамасы үлкен", "Екі еселенген A шамасы B шамасына тең", "Берілген ақпараттар жауабын табу мүмкін емес"],
         answer: 0,
-        explanation: "Жүйені шешеміз: 3x + 2y = 1, 14x + 9y = 5. Бірінші теңдеуді 9-ға, екіншіні 2-ге көбейтсек: 27x + 18y = 9, 28x + 18y = 10. Азайтамыз: x = 1. Сонда y = -1. Демек, A = 1, B = -1, A үлкен."
+        explanation: "Берілген мәлімет бойынша A және B шамалары салыстырылады. Дұрыс қорытынды: A шамасы үлкен."
       },
       {
         id: 8,
@@ -370,12 +593,12 @@
       {
         id: 10,
         block: "analytical",
-        text: "4a ≤ y ≤ 5a және 2a ≤ x ≤ 3a теңсіздіктерін қанағаттандыратын x пен y қабылдайтын мәндері сандарының көбейтіндісінің шамасын табыңыз.",
+        text: "<span class='overline'>4a</span> ≤ y ≤ <span class='overline'>5a</span> және <span class='overline'>2a</span> ≤ x ≤ <span class='overline'>3a</span> теңсіздіктерін қанағаттандыратын x пен y қабылдайтын мәндері сандарының көбейтіндісінің шамасын табыңыз.",
         options: ["400", "500", "300", "200", "100"],
         answer: 0,
-        explanation: "Берілген аралықтар бойынша x және y қабылдайтын мәндер саны есептеледі. Олардың көбейтіндісі 400-ге тең."
+        explanation: "Көптаңбалы сандардың аралығындағы мүмкін мәндер саны есептеледі. Екі аралықтағы қабылданатын мәндер санының көбейтіндісі 400-ге тең."
       },
-            {
+      {
         id: 11,
         block: "analytical",
         text: "Бағанды салыстырыңыз: X = 5A + 5, Y = 15A + 15.",
@@ -394,18 +617,18 @@
       {
         id: 13,
         block: "analytical",
-        text: "6a6 + 103 = x + 1a3 теңдеуіндегі x-тің мәнін табыңыз.",
-        options: ["606", "600", "6a6", "6a0", "6a1"],
+        text: "<span class='overline'>6a6</span> + 103 = x + <span class='overline'>1a3</span> теңдеуіндегі x-тің мәнін табыңыз.",
+        options: ["606", "600", "<span class='overline'>6a6</span>", "<span class='overline'>6a0</span>", "<span class='overline'>6a1</span>"],
         answer: 0,
-        explanation: "x-ті табу үшін оң жақтағы 1a3 санын сол жақтан азайтамыз. Разрядтар бойынша есептегенде x = 606 болады."
+        explanation: "x-ті табу үшін <span class='overline'>1a3</span> санын сол жақтан азайтамыз. Разрядтар бойынша есептегенде x = 606 болады."
       },
       {
         id: 14,
         block: "analytical",
-        text: "67a8b − x = 5a70 теңдеуіндегі x-тің мәнін табыңыз.",
-        options: ["6201b", "2a04b", "204b", "3a03b", "6503b"],
+        text: "Үш санның қосындысы 36-ға тең. Екінші сан біріншіден 4-ке артық, ал үшінші сан екіншіден 2 есе артық. Үшінші санды табыңыз.",
+        options: ["20", "18", "16", "14", "12"],
         answer: 0,
-        explanation: "x = 67a8b − 5a70. Разрядтар бойынша азайтқанда x = 6201b шығады."
+        explanation: "Бірінші санды x дейік. Онда екінші сан x + 4, үшінші сан 2(x + 4). Қосындысы: x + (x + 4) + 2(x + 4) = 36. Бұл 4x + 12 = 36 → 4x = 24 → x = 6. Екінші сан 10, үшінші сан 20."
       },
       {
         id: 15,
@@ -415,13 +638,13 @@
         answer: 0,
         explanation: "Қияр мен қызанақ бірдей мөлшерде алынған. Орташа пайыз: (80% + 90%) / 2 = 85%."
       },
-      {
+            {
         id: 16,
         block: "critical",
         text: "Сөйлемді мағынасына сай толықтырыңыз: Ит кенесі мен тайга кенесі табиғатта әртүрлі жануарлардың денесіне орнығып, бір жануардан екінші жануарға сорған қаны арқылы энцефалит қоздырғышын таратады, бірақ бұдан жануар ...",
         options: ["ауырмайды", "жетілмейді", "өспейді", "бейімделмейді", "азаймайды"],
         answer: 0,
-        explanation: "Мәтінде кенелер ауру қоздырғышын тарататыны айтылған, бірақ жануардың өзі ауруға шалдықпайтыны мағынаға сай келеді. Сондықтан дұрыс жауап — «ауырмайды»."
+        explanation: "Мәтінде кенелер ауру қоздырғышын тарататыны айтылған, бірақ жануардың өзі ауырмайтыны мағынаға сай келеді."
       },
       {
         id: 17,
@@ -429,7 +652,7 @@
         text: "Көп нүктенің орнына сәйкес сөз жазыңыз: Нұрсұлтан Назарбаев: «[...] туған жерге туыңды тік» деп бекер айтпаған.",
         options: ["қазақ", "адамдар", "халық", "жамағат", "ел"],
         answer: 0,
-        explanation: "Бұл тұрақты қолданыста «Қазақ туған жерге туыңды тік деп бекер айтпаған» деген мағынада беріледі. Сондықтан сәйкес сөз — «қазақ»."
+        explanation: "Тұрақты қолданыста «Қазақ туған жерге туыңды тік деп бекер айтпаған» деп беріледі."
       },
       {
         id: 18,
@@ -437,136 +660,182 @@
         text: "Сөйлемнің мағыналас сын есімі бар тіркеспен толықтырыңыз: Не [...], не жауратар суық емес тау төсінің салқын самалы есіп, осынау ластанған әлемнің әлі де болса рахымды жері қалғанын есіне түсіргендей.",
         options: ["пысынатар ыстық", "күңгірт аспан", "көңілді күн", "қолайсыз мезгіл", "жаймашуақ жаз"],
         answer: 0,
-        explanation: "Сөйлемде «не ыстық емес, не суық емес» деген қарама-қарсы мағына жасалып тұр. Сондықтан «пысынатар ыстық» тіркесі мағынаға сай келеді."
+        explanation: "Сөйлемде «не ыстық емес, не суық емес» деген қарама-қарсы мағына жасалып тұр. Сондықтан «пысынатар ыстық» дұрыс келеді."
       },
       {
         id: 19,
         block: "critical",
-        text: "Мәтін бойынша: Халқымыздың байырғы бейнелеу шығармашылығының жетекші түрі — дәстүрлі қолөнер. «Маңызды» сөзіне мағынасы жақын сөзді табыңыз.",
+        passage: "p19_21",
+        text: "«Маңызды» сөзіне мағынасы жақын сөзді табыңыз.",
         options: ["құнды", "басым", "түсінікті", "айтулы", "белгілі"],
         answer: 0,
-        explanation: "«Маңызды» сөзі бұл жерде «құнды», «мәні бар» деген мағынада қолданылған."
+        explanation: "«Маңызды» сөзі бұл мәтінде «құнды», «мәні бар» деген мағынада қолданылған."
       },
       {
         id: 20,
         block: "critical",
-        text: "Берілген мәтіннің мақсатын анықтаңыз. Мәтінде қазақ халқының дәстүрлі қолөнері, оның түрлері мен ерекшеліктері туралы айтылады.",
+        passage: "p19_21",
+        text: "Берілген мәтіннің мақсатын анықтаңыз.",
         options: ["қазақ халқының қолөнерінің ерекшеліктерін сипаттау", "бейнелеу өнерінің сипатын анықтау", "бейнелеу өнеріне тән ерекшеліктерді айқындау", "кәсіп түрлерінің ерекшеліктерін айқындау", "қолөнердің маңызды бағытын таныту"],
         answer: 0,
-        explanation: "Мәтінде қолөнердің бағыттары, тұрмыста қолданылуы, ерекшеліктері сипатталады. Сондықтан мәтіннің мақсаты — қазақ халқының қолөнерінің ерекшеліктерін сипаттау."
+        explanation: "Мәтінде дәстүрлі қолөнердің түрлері, ерекшелігі, тұрмыста қолданылуы сипатталған."
       },
       {
         id: 21,
         block: "critical",
-        text: "Берілген мәтінге сәйкес тақырыпты таңдаңыз. Мәтін қазақ халқының дәстүрлі қолөнері туралы.",
+        passage: "p19_21",
+        text: "Берілген мәтінге сәйкес тақырыпты таңдаңыз.",
         options: ["қазақ халқының қолөнері", "қазақстан мәдениеті", "шеберлер шығармашылығы", "бейнелеу өнері", "кәсіп түрлері"],
         answer: 0,
-        explanation: "Мәтіннің негізгі ойы — қазақ халқының қолөнері. Сондықтан ең нақты тақырып осы."
+        explanation: "Мәтіннің негізгі мазмұны қазақ халқының дәстүрлі қолөнері туралы."
       },
       {
         id: 22,
         block: "critical",
-        text: "Берілген мәтінге сәйкес тақырыпты таңдаңыз. Мәтінде адамзат өміріндегі өсімдіктердің рөлі, олардың пайдасы және қолданылуы туралы айтылады.",
+        passage: "p22_24",
+        text: "Берілген мәтінге сәйкес тақырыпты таңдаңыз.",
         options: ["өсімдіктердің адам өміріндегі маңызы", "өсімдіктердің пайдасы", "өсімдіктердің даму тарихы", "өсімдіктердің зерттелу тарихы", "өсімдік әлемін зерттеушілер"],
         answer: 0,
-        explanation: "Мәтінде өсімдіктердің адамға қажеттілігі, тұрмыста, дәрі ретінде, тағам ретінде қолданылуы туралы айтылған. Сондықтан тақырып — өсімдіктердің адам өміріндегі маңызы."
+        explanation: "Мәтінде өсімдіктердің адам өміріндегі рөлі, пайдасы, емдік және сәндік қызметі айтылған."
       },
       {
         id: 23,
         block: "critical",
+        passage: "p22_24",
         text: "«Ерекше» сөзіне мағынасы жақын сөзді табыңыз.",
         options: ["өзгеше", "түрліше", "қысқаша", "айрықша", "басқаша"],
         answer: 0,
-        explanation: "«Ерекше» сөзінің мағынасына ең жақын сөз — «өзгеше»."
+        explanation: "«Ерекше» сөзінің ең жақын мағынасы — «өзгеше»."
       },
       {
         id: 24,
         block: "critical",
-        text: "Берілген мәтіннің мақсатын анықтаңыз. Мәтінде өсімдіктердің адам өміріндегі пайдасы, тұрмыстағы және емдік қолданылуы баяндалады.",
+        passage: "p22_24",
+        text: "Берілген мәтіннің мақсатын анықтаңыз.",
         options: ["өсімдіктердің адамға пайдасын көрсету", "өсімдіктерді түрлерімен таныстыру", "негізгі қоректік өсімдіктерді таныту", "өсімдіктерден дәрі жасау жолдарын сипаттау", "өсімдіктерді дұрыс өсіру жолдарын талдау"],
         answer: 0,
-        explanation: "Мәтінде өсімдіктердің адам өміріндегі әртүрлі пайдасы көрсетілген. Сондықтан дұрыс жауап — өсімдіктердің адамға пайдасын көрсету."
+        explanation: "Мәтінде өсімдіктердің тағамдық, емдік, сәндік пайдасы көрсетілген."
       },
       {
         id: 25,
         block: "critical",
-        text: "Инклюзивті білім беру латын тілінің «енгіземін, қосамын» деген сөзінен алынған. Берілген мәтінге сәйкес тақырыпты таңдаңыз.",
-        options: ["білім берудің үрдісі", "білім берудің сипаты", "білім берудің әдісі", "білім берудің бағыты", "білім берудің түрі"],
+        passage: "p25_27",
+        text: "Берілген мәтінге сәйкес тақырыпты таңдаңыз.",
+        options: ["білім берудің үрдісі", "білім берудің әдісі", "білім берудің бағыты", "білім берудің түрі", "білім берудің сипаты"],
         answer: 0,
-        explanation: "Мәтінде инклюзивті білім берудің мәні және оны іске асыру үдерісі түсіндіріледі. Сондықтан тақырыпқа ең сәйкес жауап — «білім берудің үрдісі»."
+        explanation: "Мәтінде инклюзивті білім берудің кіріктірілген білім беру процесі екені айтылған."
       },
       {
         id: 26,
         block: "critical",
+        passage: "p25_27",
         text: "«Қол жеткізу» сөз тіркесінің мағынасы жақын сөзді табыңыз.",
         options: ["нәтиже", "қорытынды", "пайда", "сапа", "көрсеткіш"],
         answer: 0,
-        explanation: "«Қол жеткізу» тіркесі белгілі бір нәтижеге жету мағынасында қолданылады. Сондықтан дұрыс жауап — «нәтиже»."
+        explanation: "«Қол жеткізу» белгілі бір нәтижеге жету мағынасын білдіреді."
       },
       {
         id: 27,
         block: "critical",
-        text: "Берілген мәтіннің мақсатын анықтаңыз. Мәтінде инклюзивті білім беру ұғымына түсінік беріледі.",
+        passage: "p25_27",
+        text: "Берілген мәтіннің мақсатын анықтаңыз.",
         options: ["инклюзивті білім беруге анықтама беру", "инклюзивті білім беруді пікір білдіру", "инклюзивті білім беруді салыстыру", "инклюзивті білім беруге сипаттама беру", "инклюзивті білім берудің мүмкіндігін нақтылау"],
         answer: 0,
-        explanation: "Мәтінде инклюзивті білім берудің не екені түсіндірілген. Сондықтан мәтіннің негізгі мақсаты — анықтама беру."
+        explanation: "Мәтінде инклюзивті білім беру ұғымы түсіндіріліп, оның мәні ашылған."
       },
       {
         id: 28,
         block: "critical",
+        passage: "p28_30",
         text: "Мәтінде берілген ойды әрі қарай жалғастырыңыз: Сұр шойынның матрица қасиеті, формасы графит өлшемі — оның ...",
         options: ["механикалық қасиеті", "беріктік шегі", "пластикалық пішіні", "майысу кезеңі", "химиялық құрамы"],
         answer: 0,
-        explanation: "Мәтінде сұр шойынның механикалық қасиеттері матрицаға, графит формасына және өлшеміне байланысты екені айтылған. Сондықтан дұрыс жауап — «механикалық қасиеті»."
+        explanation: "Мәтінде механикалық қасиеттері металл матрица қасиетіне, формасына, графит өлшеміне байланысты екені айтылған."
       },
       {
         id: 29,
         block: "critical",
+        passage: "p28_30",
         text: "Мәтінге сәйкес ақпаратты табыңыз.",
         options: ["ақ шойынның мықтылығы қаттылығына байланысты", "шойындарды легирлеу үшін хром, мыс, никель, титан пайдаланылады", "шойындарды маркалау болаттың маркалауына ұқсайды", "ыстыққа төзімді шойын бірнеше қорытпа қосылыстарынан пайда болады", "антифрикциялық шойындар қорытпалар ретінде қолданылады"],
         answer: 0,
-        explanation: "Мәтіндегі негізгі ақпарат бойынша ақ шойынның қасиеті оның қаттылығымен байланысты екені көрсетілген."
+        explanation: "Мәтінде ақ шойынның қатты, морт сынғыш болып келетіні және жоғары қаттылықтың арқасында төзімді болатыны айтылған."
       },
       {
         id: 30,
         block: "critical",
+        passage: "p28_30",
         text: "«Мүмкін» сөзіне мағынасы жақын сөзді табыңыз.",
         options: ["ықтимал", "шамалы", "нашар", "осал", "әлсіз"],
         answer: 0,
-        explanation: "«Мүмкін» сөзі «ықтимал», «болуы мүмкін» деген мағынаны білдіреді."
+        explanation: "«Мүмкін» сөзі «ықтимал» деген мағынаға жақын."
       }
     ];
 
     const analyticalBox = document.getElementById("analytical");
     const criticalBox = document.getElementById("critical");
 
+    const shownPassages = new Set();
+
+    function renderPassage(key) {
+      if (!key || shownPassages.has(key)) return "";
+      shownPassages.add(key);
+
+      let title = "";
+      if (key === "p19_21") title = "19–21 сұрақтарға ортақ мәтін";
+      if (key === "p22_24") title = "22–24 сұрақтарға ортақ мәтін";
+      if (key === "p25_27") title = "25–27 сұрақтарға ортақ мәтін";
+      if (key === "p28_30") title = "28–30 сұрақтарға ортақ мәтін";
+
+      return `
+        <div class="passage">
+          <div class="passage-title">${title}</div>
+          <p>${passages[key]}</p>
+        </div>
+      `;
+    }
+
     function renderQuestions() {
       questions.forEach(q => {
-        const card = document.createElement("div");
-        card.className = "question";
+        const wrapper = document.createElement("div");
 
-        let imageHTML = q.image ? `<img class="q-image" src="${q.image}" alt="${q.id}-сұрақ суреті">` : "";
+        let imageHTML = "";
 
-        card.innerHTML = `
-          <div class="q-head">
-            <div class="q-num">${q.id}</div>
-            <div class="q-text">${q.text}</div>
-          </div>
-          ${imageHTML}
-          <div class="options">
-            ${q.options.map((opt, i) => `
-              <label class="option">
-                <input type="radio" name="q${q.id}" value="${i}">
-                ${opt}
-              </label>
-            `).join("")}
+        if (q.images && q.images.length) {
+          imageHTML = `
+            <div class="q-images">
+              ${q.images.map((img, index) => `
+                <img class="q-image" src="${img}" alt="${q.id}-сұрақ суреті ${index + 1}">
+              `).join("")}
+            </div>
+          `;
+        } else if (q.image) {
+          imageHTML = `<img class="q-image" src="${q.image}" alt="${q.id}-сұрақ суреті">`;
+        }
+
+        wrapper.innerHTML = `
+          ${renderPassage(q.passage)}
+          <div class="question">
+            <div class="q-head">
+              <div class="q-num">${q.id}</div>
+              <div class="q-text">${q.text}</div>
+            </div>
+            ${imageHTML}
+            <div class="options">
+              ${q.options.map((opt, i) => `
+                <label class="option">
+                  <input type="radio" name="q${q.id}" value="${i}">
+                  ${opt}
+                </label>
+              `).join("")}
+            </div>
           </div>
         `;
 
         if (q.block === "analytical") {
-          analyticalBox.appendChild(card);
+          analyticalBox.appendChild(wrapper);
         } else {
-          criticalBox.appendChild(card);
+          criticalBox.appendChild(wrapper);
         }
       });
     }
@@ -617,15 +886,15 @@
 
         <div class="score-grid">
           <div class="score-card">
-            Жалпы нәтиже
+            <span>Жалпы нәтиже</span>
             <strong>${total} / ${questions.length}</strong>
           </div>
           <div class="score-card">
-            Аналитикалық ойлау
+            <span>Аналитикалық ойлау</span>
             <strong>${analytical} / 15</strong>
           </div>
           <div class="score-card">
-            Сыни ойлау
+            <span>Сыни ойлау</span>
             <strong>${critical} / 15</strong>
           </div>
         </div>
